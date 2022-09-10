@@ -89,7 +89,7 @@ body{
     width: 200px;
     min-width: 200px;
     height: 320px;
-    border: 1px black solid;
+    border: 1px #fab403 solid;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -231,6 +231,7 @@ footer{
     height: 200px;
     background-color: #000;
     padding-top: 15px;
+
 }
 .foot-menu{
     max-width: 1200px;
