@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <title>útil Ferragens</title>
     <script src="./js/database.js"></script>
+    <script src="https://kit.fontawesome.com/f61ea46038.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -62,12 +63,10 @@
             </section>
         </div>    
         <aside class="finaliza">
-            <div class="procura">
-                <form action="">
-                    <input type="text" placeholder="Procure o produto aki" class="pesquisa">
-                    <button type="submit" class="busca-but">buscar</button>
-                </form>
-            </div>
+            <form class="procura" action="#" method="post">
+                    <input type="text" name="search" id="search" class="pesquisa" placeholder="Busque o produto" required>
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
             <div class="carrinho">
                 <h3 class="car-title">Carrinho de compras</h3>
                 <div class="nav-carrinho">
