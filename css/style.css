@@ -36,7 +36,7 @@ html, body, figure, img, div, section, article, input, button, textarea, p, h1, 
 .menu-nav{
     display: inline-flex;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
 }
 body{
     background-color: #f3be37d0;
@@ -316,7 +316,7 @@ footer{
 }
 .atendimento{
     width: 250px;
-    gap: 5px;
+    gap: 15px;
 }
 ::-webkit-scrollbar {
     width: 10px;
