@@ -29,15 +29,15 @@ function separarProdutos(lista){
 separarProdutos(data);
 
 const listaFuradeira = document.querySelector('.lista-furadeiras');
-console.log(listaFuradeira);
+
 const listaFerramenta = document.querySelector('.lista-ferramentas');
-console.log(listaFerramenta);
+
 const listaChuveiro = document.querySelector('.lista-chuveiros');
-console.log(listaChuveiro)
+
 const listaClima = document.querySelector('.lista-clima');
-console.log(listaClima)
+
 const listaParafu = document.querySelector('.lista-parafus');
-console.log(listaParafu)
+
 
 function listarProdutos(lista, local){
     for(let i = 0; i<lista.length; i++){
@@ -90,14 +90,13 @@ function criarCard(produto){
 
     return tagLi
 };
-//contadora do carrinho
+
 let contaCart = 0;
 
-//soma do carrinho
 let somaCart = 0;
 
 let botaoProduto = document.getElementsByClassName('adc-button');
-console.log(botaoProduto)
+
 for(let i = 0; i<botaoProduto.length; i++){
     let botaoAtual = botaoProduto[i]
     botaoAtual.addEventListener('click', function(event){
@@ -163,39 +162,21 @@ function adicionaCarrinho(item){
 
     });
     
-    tagLi.append(tagImg, tagNome, tagPreco, tagBot)
+    tagLi.append(tagImg, tagNome, tagPreco, tagBot);
 
-    carrinho.appendChild(tagLi)
-
-
-
+    carrinho.appendChild(tagLi);
 }
-/*
-PRODUTO IDENFIFICA
-{
-    id: 5,
-    img: "chufut.jpg",
-    nameItem: "Ducha Futura",
-    description:
-      "Ducha Futura Multitemperaturas, 5500W, Lorenzetti, Branco",
-    value: 93.90,
-    addCart: "Adicionar ao carrinho",
-    tag: "Chuveiros",
-},
-CARD VITRINE
-<li class="card-produto">
-     <img src="./img/furboi.jpg" alt="" class="img-card">
-     <h3>furadeira boshi</h3>
-     <p>furadeira de impacto bosh</p>
-     <p><strong>R$469,90</strong></p>
-     <h6>furadeiras</h6>
-    <button type="submit" class="adc-button">adicionar ao carrinho</button>
-</li>
-CARD CARRINHO
-<li class="produto-car">
-    <img src="./img/furboi.jpg" alt="" class="img-car">
-    <h5 class="titulo">furadeira boshc</h5>
-    <h6>R$469,90</h6>
-    <button type="submit" class="remove-prod">-</button>
-</li>
-*/
+function pesquisar(){
+    var input,filtro,vitrine,vitrineItens,links;
+    input = document.getElementById("search");
+    filtro = input.value.toUpperCase();
+    vitrine = document.querySelector('.vitrine');
+    vitrineItens = vitrine.getElementsByTagName('li');
+    for(var i=0; i<vitrineItens.length; i++){
+        links = vitrineItens[i].getElementsByTagName('h3')[0];
+        if(links.innerHTML.toUpperCase().indexOf(filtro)>-1){
+            vitrineItens[i].style.display="";
+        }
+        else{vitrineItens[i].style.display="none"}
+    }
+}
