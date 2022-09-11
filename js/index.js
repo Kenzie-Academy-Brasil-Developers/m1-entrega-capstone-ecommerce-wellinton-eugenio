@@ -64,7 +64,6 @@ function criarCard(produto){
     let bottom = produto.addCart;
     let secao  = produto.tag;
 
-    //criar tags
     let tagLi     = document.createElement('li');
     let tagImg    = document.createElement('img');
     let tagName   = document.createElement('h3');
@@ -73,7 +72,6 @@ function criarCard(produto){
     let tagSec    = document.createElement('h6');
     let tagbutton = document.createElement('button');
     
-    //adicionar classe as tags
    tagLi.classList.add("card-produto");
    tagImg.classList.add("img-card");
    tagbutton.classList.add("adc-button")
@@ -86,6 +84,7 @@ function criarCard(produto){
     tagSec.innerText   = secao
     tagbutton.type     = 'submit'
     tagbutton.innerText= bottom
+    tagbutton.setAttribute("id", `pd-${id}`)
 
     tagLi.append(tagImg, tagName, tagDesc, tagPrice, tagSec, tagbutton)
 
@@ -100,7 +99,76 @@ let somaCart = 0;
 let botaoProduto = document.getElementsByClassName('adc-button');
 console.log(botaoProduto)
 for(let i = 0; i<botaoProduto.length; i++){
+    let botaoAtual = botaoProduto[i]
+    botaoAtual.addEventListener('click', function(event){
+        let produtoClick = event.target;
+        let idProduto = produtoClick.id
+        let id = parseInt(idProduto.substring(3))
+        
+        let prodObj = procurarProduto(id)
+        
+        adicionaCarrinho(prodObj)
+        
+    });
+}
+
+function procurarProduto(id){
+    for(let i = 0; i<data.length; i++){
+        let item = data[i]
+        if(item.id===id){
+           return item;
+        }
+    }
+    return false
+}
+
+function adicionaCarrinho(item){
+    contaCart++;
+    document.querySelector('.qtd-car').innerHTML = `${contaCart}`
+    somaCart += item.value
+    document.querySelector('.valor-car').innerHTML = somaCart.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    const carrinho = document.querySelector('.lista-car')
+    let id    = item.id;
+    let img   = item.img
+    let nome  = item.nameItem;
+    let preco = item.value
+
+    let tagLi    = document.createElement('li');
+    let tagImg   = document.createElement('img');
+    let tagNome  = document.createElement('h5');
+    let tagPreco = document.createElement('h6');
+    let tagBot   = document.createElement('button');
+
+    tagLi.classList.add("produto-car")
+    tagImg.classList.add("img-car")
+    tagBot.classList.add("remove-prod")
+    tagBot.setAttribute("id", `rmv-${id}`)
+
+    tagImg.src         = `./img/${img}`;
+    tagImg.alt         = nome;
+    tagNome.innerText  = nome;
+    tagPreco.innerText = preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    tagBot.type        = 'submit';
+    tagBot.innerHTML   = '-';
+
+    tagBot.addEventListener('click', function(event){
+        let li = event.path[1]
+        li.remove()
+
+        contaCart--
+        document.querySelector('.qtd-car').innerHTML = `${contaCart}`
+        somaCart -= item.value
+        document.querySelector('.valor-car').innerHTML = somaCart.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    });
     
+    tagLi.append(tagImg, tagNome, tagPreco, tagBot)
+
+    carrinho.appendChild(tagLi)
+
+
+
 }
 /*
 PRODUTO IDENFIFICA
