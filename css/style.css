@@ -138,6 +138,7 @@ body{
     height: 30px;
     background-color: #f3c758;
     border-radius: 8px;
+    font-weight: 700;
 }
 .adc-button:hover{
     width: 182px;
@@ -309,6 +310,12 @@ footer{
 }
 .link-foot{
     color:#fab403;
+}
+.link-foot:hover{
+    color:#fab403;
+    font-weight: 900;
+    font-size: x-large;
+    
 }
 .foot-menu{
     max-width: 1200px;
