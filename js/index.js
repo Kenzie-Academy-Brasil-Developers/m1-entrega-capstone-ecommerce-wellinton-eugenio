@@ -91,7 +91,20 @@ function criarCard(produto){
     return tagLi
 };
 
+
 let contaCart = 0;
+
+
+function vigiarCarrinho(){
+    let carrinhoVazio = document.querySelector('.carrinho-vazio')
+    carrinhoVazio.innerHTML = ""
+    if(contaCart===0){
+    
+        let aviso = document.createElement('p')
+        aviso.innerHTML = `<strong>Carrinho Vazio</strong>`
+        carrinhoVazio.appendChild(aviso)
+    }
+}
 
 let somaCart = 0;
 
@@ -105,6 +118,8 @@ for(let i = 0; i<botaoProduto.length; i++){
         let id = parseInt(idProduto.substring(3))
         
         let prodObj = procurarProduto(id)
+        
+        
         
         adicionaCarrinho(prodObj)
         
@@ -123,6 +138,7 @@ function procurarProduto(id){
 
 function adicionaCarrinho(item){
     contaCart++;
+    vigiarCarrinho()
     document.querySelector('.qtd-car').innerHTML = `${contaCart}`
     somaCart += item.value
     document.querySelector('.valor-car').innerHTML = somaCart.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -160,6 +176,7 @@ function adicionaCarrinho(item){
         somaCart -= item.value
         document.querySelector('.valor-car').innerHTML = somaCart.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+        vigiarCarrinho()
     });
     
     tagLi.append(tagImg, tagNome, tagPreco, tagBot);
@@ -167,14 +184,14 @@ function adicionaCarrinho(item){
     carrinho.appendChild(tagLi);
 }
 function pesquisar(){
-    var input,filtro,vitrine,vitrineItens,links;
+    let input,filtro,vitrine,vitrineItens,links;
     input = document.getElementById("search");
     filtro = input.value.toUpperCase();
     vitrine = document.querySelector('.vitrine');
     vitrineItens = vitrine.getElementsByTagName('li');
     for(var i=0; i<vitrineItens.length; i++){
         links = vitrineItens[i].getElementsByTagName('h3')[0];
-        if(links.innerHTML.toUpperCase().indexOf(filtro)>-1){
+        if(links.innerHTML.toUpperCase().indexof(filtro)>-1){
             vitrineItens[i].style.display="";
         }
         else{vitrineItens[i].style.display="none"}

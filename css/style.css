@@ -37,7 +37,8 @@ html, body, figure, img, div, section, article, input, button, textarea, p, h1, 
 .menu-nav{
     display: inline-flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+    max-width: 603px;
 }
 .link{
     color:#000;
@@ -45,8 +46,8 @@ html, body, figure, img, div, section, article, input, button, textarea, p, h1, 
 }
 .link:hover{
     color:black;
-    font-weight: 1000;
-    font-size: x-large;
+    font-weight: 600;
+    font-size: large;
     
 }
 body{
@@ -327,6 +328,27 @@ footer{
 .img-foot{
     width: 150px;
     height: 150px;
+}
+
+.carrinho-vazio{
+    width: 296px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    padding-left: 80px;
+    padding-top: 10px;
+}
+
+.aviso{
+    font-weight: 900;
+    justify-content: center;
+    align-items: center;
+}
+
+.aviso-rel{
+    font-weight: 900;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu-sobre{
